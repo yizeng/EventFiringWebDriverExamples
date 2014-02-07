@@ -17,14 +17,14 @@ namespace EventFiringWebDriverExamples {
 		public void Initialize() {
 			IWebDriver parentDriver = new FirefoxDriver();
 
-			EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(parentDriver);
-			eventFiringWebDriver.ExceptionThrown += new EventHandler<WebDriverExceptionEventArgs>(eventFiringWebDriver_TakeScreenshotOnException);
+			EventFiringWebDriver firingDriver = new EventFiringWebDriver(parentDriver);
+			firingDriver.ExceptionThrown += new EventHandler<WebDriverExceptionEventArgs>(firingDriver_TakeScreenshotOnException);
 
-			driver = eventFiringWebDriver;
+			driver = firingDriver;
 			driver.Navigate().GoToUrl("http://stackoverflow.com");
 		}
 
-		private void eventFiringWebDriver_TakeScreenshotOnException(object sender, WebDriverExceptionEventArgs e) {
+		private void firingDriver_TakeScreenshotOnException(object sender, WebDriverExceptionEventArgs e) {
 			string timestamp = DateTime.Now.ToString("yyyy-MM-dd-hhmm-ss");
 			driver.TakeScreenshot().SaveAsFile("Exception-" + timestamp + ".png", ImageFormat.Png);
 		}
