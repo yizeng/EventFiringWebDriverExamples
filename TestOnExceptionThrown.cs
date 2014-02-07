@@ -15,9 +15,7 @@ namespace EventFiringWebDriverExamples {
 
 		[TestInitialize]
 		public void Initialize() {
-			IWebDriver parentDriver = new FirefoxDriver();
-
-			EventFiringWebDriver firingDriver = new EventFiringWebDriver(parentDriver);
+			var firingDriver = new EventFiringWebDriver(new FirefoxDriver());
 			firingDriver.ExceptionThrown += new EventHandler<WebDriverExceptionEventArgs>(firingDriver_TakeScreenshotOnException);
 
 			driver = firingDriver;
