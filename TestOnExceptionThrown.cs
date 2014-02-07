@@ -35,6 +35,7 @@ namespace EventFiringWebDriverExamples {
 		}
 
 		[TestMethod]
+		[ExpectedException(typeof(NoSuchElementException))]
 		public void LoadStackOverflowWithException() {
 			// Wrong locator, expect NoSuchElementException
 			Assert.IsTrue(driver.FindElement(By.CssSelector("#hlogo > a > a > a")).Displayed);
