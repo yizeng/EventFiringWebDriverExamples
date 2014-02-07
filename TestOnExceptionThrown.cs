@@ -25,7 +25,8 @@ namespace EventFiringWebDriverExamples {
 		}
 
 		private void eventFiringWebDriver_TakeScreenshotOnException(object sender, WebDriverExceptionEventArgs e) {
-			driver.TakeScreenshot().SaveAsFile("Exception.png", ImageFormat.Png);
+			string timestamp = DateTime.Now.ToString("yyyy-MM-dd-hhmm-ss");
+			driver.TakeScreenshot().SaveAsFile("Exception-" + timestamp + ".png", ImageFormat.Png);
 		}
 
 		[TestMethod]
