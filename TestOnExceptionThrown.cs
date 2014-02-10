@@ -16,7 +16,7 @@ namespace EventFiringWebDriverExamples {
 		[TestInitialize]
 		public void Initialize() {
 			var firingDriver = new EventFiringWebDriver(new FirefoxDriver());
-			firingDriver.ExceptionThrown += new EventHandler<WebDriverExceptionEventArgs>(firingDriver_TakeScreenshotOnException);
+			firingDriver.ExceptionThrown += firingDriver_TakeScreenshotOnException;
 
 			driver = firingDriver;
 			driver.Navigate().GoToUrl("http://stackoverflow.com");
